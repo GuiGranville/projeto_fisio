@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    width: 100vw;
+    height: 5rem;
+    background: linear-gradient(90deg, #FFFFFF 22%, #6DA647 73%);
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    top: 0;
+    position: fixed;
+    z-index: 999;
+
+    .header-logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 5%;
+        img{
+            width: 6rem;
+        }
+    }
+    .header-pesquisa{
+        display: flex;
+
+        input{
+            width: 20rem;
+            height: 2.5rem;
+            background: var(--input-color-grey);
+            border: none;
+            border-radius: 5px;
+            padding-left: 10px;
+            
+        }
+    }
+    .header-perfil{
+        margin-right: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            color: #FFFFFF;
+        }
+    }
+}
