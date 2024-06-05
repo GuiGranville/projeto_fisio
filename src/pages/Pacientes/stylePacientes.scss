@@ -1,0 +1,29 @@
+.pacientes{
+    width: 95vw;
+    height: 90vh;
+    margin-top: 10vh;
+    margin-left: 5vw;
+
+   .pacientes-header{
+       width: 93vw;
+       margin-left: 2vw;
+   }
+   .pacientes-body{
+       width: 93vw;
+       height: 85vh;
+       margin-left: 2vw;
+       padding: 20px 3vw 5vh 0;
+
+       .pacientes-container{
+         background-color: var(--backgroundPages-color);
+         width: 100%;
+         height: 100%;
+         border-radius: 15px;
+
+         .pacientes-container-filtros{
+            
+            height: 15%;
+         }
+       }
+   }
+}
