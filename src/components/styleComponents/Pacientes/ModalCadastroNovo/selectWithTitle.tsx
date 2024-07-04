@@ -28,7 +28,7 @@ interface props{
 
 export function SelectWithTitle(props: props) {
   return (
-    <Wrapper style={{width: props.wrapperWidth}}>
+    <Wrapper style={{width: props.wrapperWidth, height: props.inputHeight}}>
       <Title>{props.title}</Title>
       <Select name={props.name} value={props.value} onChange={props.fnEdit} placeholder={props.placeholder} style={{height: props.inputHeight}}>
         {props.listaItens?.map((item, index) => (

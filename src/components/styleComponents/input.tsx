@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 interface InputProps {
-    width: string;
-    height:string;
-    background: string;
-    border: string;
-    borderRadius: string;
-    paddingLeft: string;
-    fontSize: string;
-    color: string;
-    fontWeight: string;
+    width?: string;
+    height?:string;
+    background?: string;
+    border?: string;
+    borderRadius?: string;
+    paddingLeft?: string;
+    fontSize?: string;
+    color?: string;
+    fontWeight?: string;
 }
 
 

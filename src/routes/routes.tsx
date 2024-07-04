@@ -5,6 +5,8 @@ import { Sidebar } from "../components/Sidebar/Sidebar";
 import { PacientesWrapper } from "../pages/Pacientes/Pacientes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AgendamentoWrapper } from "../pages/Agendamento/Agendamento";
+import { ProfissionaisWrapper } from "../pages/Profissionais/Profissionais";
 
 
 function PrivateRoutes() {
@@ -16,6 +18,8 @@ function PrivateRoutes() {
                 <Sidebar/>
                 <Routes>
                 <Route path="/pacientes" element={<PacientesWrapper/>}/>
+                <Route path="/agendamento" element={<AgendamentoWrapper/>}/>
+                <Route path="/profissionais" element={<ProfissionaisWrapper/>}/>
                 </Routes>
             </GlobalProvider>
         </>

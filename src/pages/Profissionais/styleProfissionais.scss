@@ -1,0 +1,38 @@
+.profissionais{
+    width: 95vw;
+    height: 90vh;
+    margin-top: 10vh;
+    margin-left: 5vw;
+
+   .profissionais-header{
+       width: 93vw;
+       margin-left: 2vw;
+   }
+   .profissionais-body{
+       width: 93vw;
+       height: 85vh;
+       margin-left: 2vw;
+       padding: 20px 3vw 5vh 0;
+
+       .profissionais-container{
+         background-color: var(--backgroundPages-color);
+         width: 100%;
+         height: 100%;
+         border-radius: 15px;
+
+         .profissionais-container-filtros{
+            border: 1px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            padding-right: 20px;
+            height: 15%;
+         }
+
+         .profissionais-container-body{
+            height: 85%;
+            padding: 10px;
+         }
+       }
+   }
+}

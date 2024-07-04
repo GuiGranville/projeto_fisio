@@ -9,9 +9,9 @@ import { PacienteBanco } from "../../types/PacienteTypes"
 
 function Pacientes() {
 
-    const {modalCadastrarNovo, setModalCadastrarNovo, cadastroPaciente,
-         setCadastroPaciente, postCadastroPacientes, putCadastroPacientes ,
-          pacientesObject, countPacientes, setPage} = useContext(PacienteContext)
+    const { modalCadastrarNovo, setModalCadastrarNovo, cadastroPaciente,
+        setCadastroPaciente, postCadastroPacientes, putCadastroPacientes,
+        pacientesObject, countPacientes, setPage } = useContext(PacienteContext)
 
     const [editMode, setEditMode] = useState(false)
 
@@ -22,27 +22,27 @@ function Pacientes() {
     }
 
     return (
-            <div className="pacientes">
-                <ModalCadastroNovo editMode={editMode} modalCadastrarNovo={modalCadastrarNovo} setModalCadastrarNovo={setModalCadastrarNovo}
-                 cadastroPaciente={cadastroPaciente} setCadastroPaciente={setCadastroPaciente} postCadastroPacientes={postCadastroPacientes}
-                 putCadastroPacientes={putCadastroPacientes}/>
+        <div className="pacientes">
+            <ModalCadastroNovo editMode={editMode} modalCadastrarNovo={modalCadastrarNovo} setModalCadastrarNovo={setModalCadastrarNovo}
+                cadastroPaciente={cadastroPaciente} setCadastroPaciente={setCadastroPaciente} postCadastroPacientes={postCadastroPacientes}
+                putCadastroPacientes={putCadastroPacientes} />
 
-                <div className="pacientes-header"><HeaderPages title="Pacientes" /></div>
-                <div className="pacientes-body">
-                    <div className="pacientes-container">
-                        <div className="pacientes-container-filtros">
-                            <HeaderFiltros />
-                        </div>
-                        <div className="pacientes-container-body">
-                            <ListaPacientes setPage={setPage} countPacientes={countPacientes} Pacientes={pacientesObject} openEditPacienteModal={openEditPacienteModal}/>
-                        </div>
+            <div className="pacientes-header"><HeaderPages title="Pacientes" /></div>
+            <div className="pacientes-body">
+                <div className="pacientes-container">
+                    <div className="pacientes-container-filtros">
+                        <HeaderFiltros />
+                    </div>
+                    <div className="pacientes-container-body">
+                        <ListaPacientes setPage={setPage} countPacientes={countPacientes} Pacientes={pacientesObject} openEditPacienteModal={openEditPacienteModal} />
                     </div>
                 </div>
             </div>
+        </div>
     )
 }
 
-export function PacientesWrapper(){
+export function PacientesWrapper() {
 
     return (
         <PacienteProvider>
