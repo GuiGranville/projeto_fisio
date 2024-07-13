@@ -11,7 +11,7 @@ const Title = styled.p`
 `;
 
 interface listaItensProps{
-  value: string
+  value: string | number
   label: string
 }
 interface props{

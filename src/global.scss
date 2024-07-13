@@ -6,10 +6,12 @@
     --input-color-grey: #EFEFEF;
     --input-color-grey2: #9B9B9B;
     --primary-color: #BFEF9E;
+    --secondary-color: #70A94A;
     --sidebar-color: #6DA647;
     --titleHeader-color: #999999;
     --backgroundPages-color: #BFEF9E;
     --buttonColor: #70A94A;
+    --daysColor: #70A94A;
 
     --gradientHeader: linear-gradient(90deg, #FFFFFF 22%, #6DA647 73%);
 }
@@ -24,7 +26,7 @@
     }
 
     input{
-        outline: none;
+        outline: none !important;
     }
     .disabled {
         cursor: not-allowed;
@@ -35,5 +37,6 @@
     button {
         cursor: pointer;
         border: none;
+        outline: none !important;
       }
 }

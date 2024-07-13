@@ -10,6 +10,7 @@ interface InputProps {
     fontSize?: string;
     color?: string;
     fontWeight?: string;
+    marginTop?: string
 }
 
 
@@ -23,4 +24,5 @@ export const Input = styled.input<{style?: InputProps, placeholder?: string}>`
     font-size: ${props => props.style?.fontSize || "1rem"};
     color: ${props => props.style?.color || "var(--input-color-grey2)"};
     font-weight: ${props => props.style?.fontWeight || "500"};
+    margin-top: ${props => props.style?.marginTop || "0"};
 `;

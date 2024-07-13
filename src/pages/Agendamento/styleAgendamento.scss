@@ -20,6 +20,37 @@
             width: 100%;
             height: 100%;
             border-radius: 15px;
+            display: flex;
+
+            .agendamento-container-left{
+                width: 20%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                .agendamento-container-left-calendario{
+                    width: 90%;
+                    height: 35%;
+                   
+                }
+            }
+            .agendamento-container-mid{
+                width: 60%;
+                height: 100%;
+
+                .agendamento-container-mid-calendario{
+                    width: 100%;
+                    height: 85%;
+                    
+                }
+
+                .agendamento-container-left-buttons{
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 15%;
+                    gap: 20px;
+                }
+            }
         }
     }    
 }

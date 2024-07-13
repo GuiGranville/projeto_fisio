@@ -15,6 +15,15 @@ export class PacientesController {
         return response
     }
 
+    async getPacienteByName(nome: string, cd_multi_empresa: number) {
+        const response: AxiosResponse = await makeRequest({
+            method: "GET",
+            url: `${ApiUrl}/paciente/getByName`,
+            params: {nm_paciente: nome, cd_multi_empresa: cd_multi_empresa}
+        })
+        return response
+    }
+
     async countPacientes(cd_multi_empresa: number) {
         const response: AxiosResponse = await makeRequest({
             method: "GET",
