@@ -79,8 +79,9 @@ export function CalendarioAgendamento(props: props) {
             }
             eventClick={
                 (info) => {
-                    console.log(info)}
+                   
                 }
+              }
             />
         </div>
     )
