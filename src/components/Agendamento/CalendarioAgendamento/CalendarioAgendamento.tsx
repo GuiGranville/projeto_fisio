@@ -3,15 +3,30 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { AgendamentoRetornoSelect } from "../../../types/AgendamentoTypes";
+import { useEffect, useRef } from "react";
 
 interface props{
   agendamentos: AgendamentoRetornoSelect[]
+  date: any
 }
 export function CalendarioAgendamento(props: props) {
+  const calendarRef = useRef(null) as any;
+  const goToDate = (date: Date) => {
+    if(calendarRef.current){
+      calendarRef.current.getApi().gotoDate(date)
+    }
+  }
+
+  useEffect(() => {
+    if (props.date) {
+      goToDate(props.date);
+    }
+  }, [props.date]);
 
     return (
         <div className="calendarioAgendamento">
             <FullCalendar 
+            ref={calendarRef}
             plugins={[dayGridPlugin, timeGridPlugin]}
             initialView="timeGridWeek"
             initialDate={new Date()}
@@ -62,6 +77,10 @@ export function CalendarioAgendamento(props: props) {
                     }
                 })
             }
+            eventClick={
+                (info) => {
+                    console.log(info)}
+                }
             />
         </div>
     )

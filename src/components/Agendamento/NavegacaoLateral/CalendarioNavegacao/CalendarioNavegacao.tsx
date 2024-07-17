@@ -14,7 +14,8 @@ export default function CalendarioNavegacao() {
     }
     return(
         <div className="calendarioNavegacao">
-            <Calendar showFixedNumberOfWeeks
+            <Calendar 
+            showFixedNumberOfWeeks
              onChange={(e: any) => handleDateChange(e)}
              formatShortWeekday={(locale, value) => new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(value)}
              />
