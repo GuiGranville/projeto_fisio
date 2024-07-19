@@ -23,6 +23,7 @@ function PrivateRoutes() {
                 <Sidebar/>
                 <Routes>
                 <Route path="/pacientes" element={<PacientesWrapper/>}/>
+                <Route path="/" element={<AgendamentoWrapper/>}/>
                 <Route path="/agendamento" element={<AgendamentoWrapper/>}/>
                 <Route path="/profissionais" element={<ProfissionaisWrapper/>}/>
                 

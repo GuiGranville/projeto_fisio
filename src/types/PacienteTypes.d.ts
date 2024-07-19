@@ -1,7 +1,7 @@
 
 export interface PacienteBanco{
-    cd_paciente?: number
-    nm_paciente?: string
+    cd_paciente: number
+    nm_paciente: string
     cpf?: string
     ds_sexo?: string
     dt_nascimento?: string

@@ -31,6 +31,10 @@ interface AgendamentoProps {
     setProcedimentos: React.Dispatch<React.SetStateAction<ProcedimentoBanco[]>>
     salas: SalaBanco[]
     setSalas: React.Dispatch<React.SetStateAction<SalaBanco[]>>
+    modalDetalhesAgendamento: boolean
+    setModalDetalhesAgendamento: React.Dispatch<React.SetStateAction<boolean>>
+    modalDetalhesAgendamentoInfos: AgendamentoRetornoSelect
+    setModalDetalhesAgendamentoInfos: React.Dispatch<React.SetStateAction<AgendamentoRetornoSelect>>
 }
 
 const agendamentoEstadoInicial = {
@@ -65,6 +69,9 @@ export const AgendamentoProvider = ({children}: props) => {
     const [listaProfissionais, setListaProfissionais] = useState([] as ProfissionalBanco[]);
     const [procedimentos, setProcedimentos] = useState([] as ProcedimentoBanco[]);
     const [salas, setSalas] = useState([] as SalaBanco[]);
+
+    const [modalDetalhesAgendamento, setModalDetalhesAgendamento] = useState(false);
+    const [modalDetalhesAgendamentoInfos, setModalDetalhesAgendamentoInfos] = useState({} as AgendamentoRetornoSelect);
 
     useEffect(() => {
         getAgendamentos()
@@ -164,6 +171,8 @@ export const AgendamentoProvider = ({children}: props) => {
              setAgendamentos, getPacienteName,
              listaPacientes, setListaPacientes,
              procedimentos, setProcedimentos,
-             salas, setSalas}}>{children}</AgendamentoContext.Provider>
+             salas, setSalas,
+             modalDetalhesAgendamento, setModalDetalhesAgendamento,
+             modalDetalhesAgendamentoInfos, setModalDetalhesAgendamentoInfos}}>{children}</AgendamentoContext.Provider>
     )
 }

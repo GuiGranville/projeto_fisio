@@ -29,7 +29,7 @@ interface props{
   wrapperWidth?: string
   placeholder?: string
   type?: string
-  fnEdit?: (e) => void
+  fnEdit?: (e: any) => void
   value?: string | number
   name?: string
   style?: styleProps

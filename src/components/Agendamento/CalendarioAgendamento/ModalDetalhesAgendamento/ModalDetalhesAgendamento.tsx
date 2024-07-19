@@ -1,9 +1,13 @@
+import "./styleModalDetalhesAgendamento.scss"
 
 
-export function ModalDetalhesAgendamento() {
+interface props{
+    detalhes: string
+}
+export function ModalDetalhesAgendamento(props: props) {
     return (
         <div className="modalDetalhesAgendamento">
-            
+            <p>${props.detalhes}</p>
         </div>
     )
 }

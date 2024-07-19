@@ -54,8 +54,10 @@ export const ProfissionaisProvider = ({children}: props) =>{
             toast.success("Criado com Sucesso !")
             setCadastroProfissional({} as ProfissionalBanco)
             getAllProfssionais()
+            setModalCadastrarNovo(false)
         }else{
-            toast.error(response.data)
+            console.log(response)
+            toast.error("Erro ao Cadastrar Profissional")
         }
 
     }

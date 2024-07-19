@@ -17,6 +17,7 @@ export function ListaPacientes(props: props) {
     const qtPages = Math.ceil(props.countPacientes / 10)
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        console.log(event)
         props.setPage(value);
       };
     return (

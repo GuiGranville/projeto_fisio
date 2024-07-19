@@ -3,14 +3,18 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { AgendamentoRetornoSelect } from "../../../types/AgendamentoTypes";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { AgendamentoContext } from "../../../context/Agendamento/AgendamentoContext";
 
 interface props{
   agendamentos: AgendamentoRetornoSelect[]
-  date: any
+  date: any 
 }
 export function CalendarioAgendamento(props: props) {
   const calendarRef = useRef(null) as any;
+  const {setModalDetalhesAgendamentoInfos, setModalDetalhesAgendamento} = useContext(AgendamentoContext)
+
+
   const goToDate = (date: Date) => {
     if(calendarRef.current){
       calendarRef.current.getApi().gotoDate(date)
@@ -23,6 +27,11 @@ export function CalendarioAgendamento(props: props) {
     }
   }, [props.date]);
 
+  function handleOpenModalDetalhes(props: AgendamentoRetornoSelect ){
+    setModalDetalhesAgendamentoInfos(props)
+    setModalDetalhesAgendamento(true)
+
+  }
     return (
         <div className="calendarioAgendamento">
             <FullCalendar 
@@ -73,13 +82,16 @@ export function CalendarioAgendamento(props: props) {
                     return {
                       title: `${item.nm_paciente} (${item.nm_profissional})`,
                       start: item.dt_inicio,
-                      end: item.dt_fim,                      
+                      end: item.dt_fim,    
+                      
+                      extendedProps: item
                     }
                 })
+                
             }
             eventClick={
                 (info) => {
-                   
+                   handleOpenModalDetalhes(info.event.extendedProps as AgendamentoRetornoSelect)
                 }
               }
             />
