@@ -5,6 +5,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { AgendamentoRetornoSelect } from "../../../types/AgendamentoTypes";
 import { useContext, useEffect, useRef } from "react";
 import { AgendamentoContext } from "../../../context/Agendamento/AgendamentoContext";
+import { ModalDetalhesAgendamento } from "./ModalDetalhesAgendamento/ModalDetalhesAgendamento";
 
 interface props{
   agendamentos: AgendamentoRetornoSelect[]
@@ -12,7 +13,7 @@ interface props{
 }
 export function CalendarioAgendamento(props: props) {
   const calendarRef = useRef(null) as any;
-  const {setModalDetalhesAgendamentoInfos, setModalDetalhesAgendamento} = useContext(AgendamentoContext)
+  const {setModalDetalhesAgendamentoInfos, modalDetalhesAgendamentoInfos, setModalDetalhesAgendamento, modalDetalhesAgendamento} = useContext(AgendamentoContext)
 
 
   const goToDate = (date: Date) => {
@@ -34,7 +35,9 @@ export function CalendarioAgendamento(props: props) {
   }
     return (
         <div className="calendarioAgendamento">
-            <FullCalendar 
+          <ModalDetalhesAgendamento modalDetalhesAgendamento={modalDetalhesAgendamento} setModalDetalhesAgendamento={setModalDetalhesAgendamento} modalDetalhesAgendamentoInfos={modalDetalhesAgendamentoInfos}/>
+            
+          <FullCalendar 
             ref={calendarRef}
             plugins={[dayGridPlugin, timeGridPlugin]}
             initialView="timeGridWeek"
@@ -75,7 +78,7 @@ export function CalendarioAgendamento(props: props) {
             expandRows={true}
             eventMaxStack={3}
             moreLinkClick="popover"
-
+            slotDuration={"01:00:00"}
             events={
                 props.agendamentos &&
                 props.agendamentos.map((item: AgendamentoRetornoSelect) =>{

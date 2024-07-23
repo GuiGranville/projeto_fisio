@@ -83,7 +83,7 @@ export function ModalAgendarNovo(props: props) {
                         )}
                     </div>
                     <div>
-                        <SelectWithTitle listaItens={convenios} title="Convênio*" wrapperWidth="50%"/>
+                        <SelectWithTitle listaItens={convenios} fnEdit={(e) => handleChange(e)} name="cd_convenio" title="Convênio*" wrapperWidth="50%"/>
                         <SelectWithTitle listaItens={listaProcedimentos} fnEdit={(e) => handleChange(e)} name="cd_procedimento" title="Procedimento" wrapperWidth="50%"/>
                     </div>
                     <div>

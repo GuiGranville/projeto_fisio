@@ -1,1 +1,32 @@
 
+.modalDetalhesAgendamento-background{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    .modalDetalhesAgendamento{
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        height: 35vh;
+        background-color: white;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        gap: 10px;
+        text-wrap: wrap;
+
+        .modalDetalhesAgendamento-buttons{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 10px;
+        }
+    }
+}

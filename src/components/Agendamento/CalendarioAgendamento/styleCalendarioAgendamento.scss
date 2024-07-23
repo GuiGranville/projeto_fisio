@@ -66,9 +66,7 @@
       .fc-event-time {
         display: none;
       }
-      .fc-event-title {
-        font-weight: normal;
-      }
+      
       .fc-dayGridMonth-button,
       .fc-dayGridDay-button,
       .fc-dayGridWeek-button,
@@ -93,17 +91,13 @@
         font-weight: normal !important;
         color: var(--darkPinkText);
       }
+
     
-      // .fc-event-main-frame {
-      //   height: fit-content !important;
-      // }
-      // .fc-event-main {
-      //   height: fit-content !important;
-      // }
-      // .fc-event {
-      //   width: 100% !important;
-      //   height: fit-content !important;
-      // }
+      .fc-event {
+        height: 100% !important;
+        line-height: normal;
+      }
+      
     
       // .fc-timegrid-event-harness {
       //   height: max-content !important;
