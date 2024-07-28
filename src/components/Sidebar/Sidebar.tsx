@@ -1,4 +1,5 @@
 import "./styleSidebar.scss"
+import { IoIosExit } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaCalendar } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
@@ -16,6 +17,11 @@ export function Sidebar() {
         setSideBarOpen(false)
         navigate(route)
     }
+
+    function exit(){
+        navigate("/login")
+        localStorage.clear()
+    }
     return (
         <>
             {sideBarOpen && <SidebarMenu sideBarStatus={sideBarOpen} setSideBarStatus={setSideBarOpen} />}
@@ -27,6 +33,7 @@ export function Sidebar() {
                         <div onClick={() => navigation("/agendamento")}><FaCalendar color="#FFFFFF" style={{ width: "60%", height: "60%" }} /></div>
                         <div onClick={() => navigation("/pacientes")}><MdGroup color="#FFFFFF" style={{ width: "70%", height: "70%" }} /></div>
                         <div onClick={() => navigation("/profissionais")}><FaPeopleGroup color="#FFFFFF" style={{ width: "70%", height: "70%" }}/></div>
+                        <div onClick={exit}><IoIosExit color="#FFFFFF" style={{ width: "70%", height: "70%" }}/></div>
                     </div>
                 </div>
             )}
@@ -53,12 +60,12 @@ const navigate = useNavigate()
     }
     return (
         <div className="sidebar-menu">
-             <div className="sidebar-icons">
+                <div className="sidebar-icons">
                         <div onClick={() => setSideBarStatus(!sideBarStatus)}><GiHamburgerMenu color="#FFFFFF" style={{ width: "30px", height: "30px" }} /> <Title>MENU</Title></div>
                         <div onClick={() => navigation("/agendamento")}><FaCalendar color="#FFFFFF" style={{ width: "25px", height: "25px" }} /><Title>AGENDAMENTOS</Title></div>
                         <div onClick={() => navigation("/pacientes")}><MdGroup color="#FFFFFF" style={{ width: "30px", height: "30px" }} /><Title>PACIENTES</Title></div>
                         <div onClick={() => navigation("/profissionais")}><FaPeopleGroup color="#FFFFFF" style={{ width: "30px", height: "30px" }} /><Title>PROFISSIONAIS</Title></div>
-                    </div>
+                </div>
         </div>
     )
 }

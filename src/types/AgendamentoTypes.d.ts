@@ -32,6 +32,7 @@ export interface AgendamentoRetornoSelect{
 	dt_fim: string
     numero_telefone: string
     procedimento: string
+    status: string
 }
 
 export interface ProcedimentoBanco{

@@ -61,7 +61,7 @@ export const AgendamentoProvider = ({children}: props) => {
     const pacientesController = new PacientesController()
 
     const [dateAuxCalendar, setDateAuxCalendar] = useState(new Date().toISOString());
-    const [cadastroAgendamento, setCadastroAgendamento] = useState({lembrete_sms: "S", lembrete_whatsapp: "N", status: "A"} as AgendamentoBanco);
+    const [cadastroAgendamento, setCadastroAgendamento] = useState({lembrete_sms: "S", lembrete_whatsapp: "N", status: "AG"} as AgendamentoBanco);
     const [agendamentos, setAgendamentos] = useState([] as AgendamentoRetornoSelect[]);
     const [novoAgendamentoModal, setNovoAgendamentoModal] = useState(false);
     

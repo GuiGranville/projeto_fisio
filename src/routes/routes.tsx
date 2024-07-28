@@ -36,7 +36,9 @@ function PrivateRoutes() {
 export function AppRoutes() {
     return (
         <BrowserRouter>
+            <ToastContainer />
             <Routes>
+                
                 <Route path="/login" element={<LoginWrapper/>}/>
                 <Route path="*" element={<PrivateRoutes />} />
             </Routes>

@@ -1,4 +1,4 @@
-import moment from "moment"
+
 import { AgendamentoRetornoSelect } from "../../../../types/AgendamentoTypes"
 import "./styleModalDetalhesAgendamento.scss"
 import { Button } from "../../../styleComponents/button"
@@ -23,7 +23,7 @@ export function ModalDetalhesAgendamento(props: props) {
     return (
         <div onClick={(e) => closeModal(e)} style={{display: props.modalDetalhesAgendamento ? "flex" : "none"}} className="modalDetalhesAgendamento-background">
             <div className="modalDetalhesAgendamento">
-                <h3>Horário: {moment(props.modalDetalhesAgendamentoInfos.dt_inicio).format('HH:mm')} - {moment(props.modalDetalhesAgendamentoInfos.dt_fim).format('HH:mm')}</h3>
+                <h3>Horário: {props.modalDetalhesAgendamentoInfos.hr_inicio} - {props.modalDetalhesAgendamentoInfos.hr_fim}</h3>
                 <p>Fisioterapeuta: {props.modalDetalhesAgendamentoInfos.nm_profissional}</p>
                 <p>Paciente: {props.modalDetalhesAgendamentoInfos.nm_paciente}</p>
                 <p>Celular: {props.modalDetalhesAgendamentoInfos.numero_telefone}</p>
