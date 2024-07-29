@@ -18,6 +18,8 @@ export default function CalendarioNavegacao() {
             showFixedNumberOfWeeks
              onChange={(e: any) => handleDateChange(e)}
              formatShortWeekday={(locale, value) => new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(value)}
+             locale="pt-BR"
+             
              />
         </div>
     )

@@ -84,3 +84,14 @@
       }
 
 }
+
+@media screen and (max-height: 750px) {
+    .calendarioNavegacao{
+
+      .react-calendar{
+        .react-calendar__navigation__label{
+            font-size: 12px;
+        }
+      }
+    }
+}

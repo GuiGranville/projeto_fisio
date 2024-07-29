@@ -41,4 +41,32 @@
             color: #FFFFFF;
         }
     }
+
+
 }
+
+@media screen and (max-height: 900px) {
+    .header{
+        height: 3.5rem;
+
+        img{
+            display: none;
+        }
+
+        .header-pesquisa{
+            display: flex;
+    
+            input{
+                width: 20rem;
+                height: 2.0rem;
+                background: var(--input-color-grey);
+                border: none;
+                border-radius: 5px;
+                padding-left: 10px;
+                
+            }
+        }
+    }
+
+
+ }

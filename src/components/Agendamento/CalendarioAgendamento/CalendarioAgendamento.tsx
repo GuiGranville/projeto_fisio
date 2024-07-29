@@ -79,7 +79,7 @@ export function CalendarioAgendamento(props: props) {
             expandRows={true}
             eventMaxStack={3}
             moreLinkClick="popover"
-            slotDuration={"02:00:00"}
+            slotDuration={"01:00:00"}
             events={
                 props.agendamentos &&
                 props.agendamentos.map((item: AgendamentoRetornoSelect) =>{
