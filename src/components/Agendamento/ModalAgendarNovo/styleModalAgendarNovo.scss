@@ -44,3 +44,22 @@
         }
     }
 }
+
+
+@media screen and (max-height: 750px) {
+    .modalAgendarNovo-background{
+        .modalAgendarNovo{
+            width: 60vw;
+            height: 90vh;
+
+            .modalAgendarNovo-body{
+                input{
+                    height: 2rem;
+                }
+                select{
+                    height: 2rem;
+                }
+            }
+        }
+    }
+}
