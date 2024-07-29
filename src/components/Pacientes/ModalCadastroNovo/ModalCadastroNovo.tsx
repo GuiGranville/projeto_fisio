@@ -97,8 +97,8 @@ export function ModalCadastroNovo(props: props) {
                             <SelectWithTitle name="ds_sexo" value={props.cadastroPaciente.ds_sexo} fnEdit={(e) => handleChange(e)} listaItens={sexos} title="Sexo/Gênero*" inputHeight="3.5rem" wrapperWidth="40%" />
                         </div>
                         <div>
-                            <InputWithTitle name="nm_paciente" value={props.cadastroPaciente.breve_diagnostico} fnEdit={(e) => handleChange(e)} title="Breve Diagnóstico" inputHeight="3.5rem" wrapperWidth="40%" />
-                            <InputWithTitle name="breve_diagnostico" value={props.cadastroPaciente.profissao} fnEdit={(e) => handleChange(e)} title="Profissão" inputHeight="3.5rem" wrapperWidth="30%" />
+                            <InputWithTitle name="breve_diagnostico" value={props.cadastroPaciente.breve_diagnostico} fnEdit={(e) => handleChange(e)} title="Breve Diagnóstico" inputHeight="3.5rem" wrapperWidth="40%" />
+                            <InputWithTitle name="profissao" value={props.cadastroPaciente.profissao} fnEdit={(e) => handleChange(e)} title="Profissão" inputHeight="3.5rem" wrapperWidth="30%" />
                             <InputWithTitle name="empresa" value={props.cadastroPaciente.empresa} fnEdit={(e) => handleChange(e)} title="Nome da Empresa" inputHeight="3.5rem" wrapperWidth="30%" />
                         </div>
                         <div>

@@ -61,7 +61,7 @@ export const AgendamentoProvider = ({children}: props) => {
     const pacientesController = new PacientesController()
 
     const [dateAuxCalendar, setDateAuxCalendar] = useState(new Date().toISOString());
-    const [cadastroAgendamento, setCadastroAgendamento] = useState({lembrete_sms: "S", lembrete_whatsapp: "N", status: "AG"} as AgendamentoBanco);
+    const [cadastroAgendamento, setCadastroAgendamento] = useState({lembrete_sms: "S", lembrete_whatsapp: "N", status: "AG", cd_convenio: 1} as AgendamentoBanco);
     const [agendamentos, setAgendamentos] = useState([] as AgendamentoRetornoSelect[]);
     const [novoAgendamentoModal, setNovoAgendamentoModal] = useState(false);
     
@@ -103,6 +103,7 @@ export const AgendamentoProvider = ({children}: props) => {
     async function getPacienteName(nome: any){
         if(nome.target.value === ""){
             setListaPacientes([])
+            setCadastroAgendamento({...cadastroAgendamento, cd_paciente: 0})
             return
         }
         await pacientesController.getPacienteByName(nome.target.value, 1)

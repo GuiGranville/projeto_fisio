@@ -50,9 +50,7 @@ function Agendamento() {
                             
                         </div>
                     </div>
-                    <div className="agendamento-container-right">
-
-                    </div>
+                   
                 </div>
             </div>
         </div>

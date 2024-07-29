@@ -24,9 +24,11 @@ export const LoginProvider = ({ children }: props) => {
     
     async function auth(email: string, password: string) {
         const response = await loginController.auth(email, password)
-        if(response.response.status === 200){
+        console.log(response)
+        if(response.status === 200){
             localStorage.setItem("token", response.data.token)
             navigate("/agendamento")
+            window.location.reload()
         }
         toast.error("Email ou Senha Incorreta")
        
