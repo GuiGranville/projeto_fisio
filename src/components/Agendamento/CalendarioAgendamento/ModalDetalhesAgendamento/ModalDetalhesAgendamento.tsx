@@ -10,6 +10,7 @@ interface props{
     setModalDetalhesAgendamento: React.Dispatch<React.SetStateAction<boolean>>
     modalDetalhesAgendamento: boolean
     putStatusAgendamento: (status: string, cd_it_agenda_central: number) => void
+    deleteAgendamento: (cd_it_agenda_central: number) => void
 }
 
 export function ModalDetalhesAgendamento(props: props) {
@@ -35,7 +36,7 @@ export function ModalDetalhesAgendamento(props: props) {
                 <div className="modalDetalhesAgendamento-buttons">
                     <Button onClick={() => props.putStatusAgendamento("EA", props.modalDetalhesAgendamentoInfos.cd_it_agenda_central)} style={{width: "60%"}}>Iniciar Atendimento</Button>
                     <Button style={{width: "20%", background: "#5198EC"}}><FaPencilAlt /></Button>
-                    <Button style={{width: "20%", background: "#EF1B1B"}}><FaRegTrashAlt/></Button>
+                    <Button onClick={() => props.deleteAgendamento(props.modalDetalhesAgendamentoInfos.cd_it_agenda_central)} style={{width: "20%", background: "#EF1B1B"}}><FaRegTrashAlt/></Button>
                 </div>
             </div>
         </div>

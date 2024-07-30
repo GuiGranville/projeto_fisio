@@ -14,7 +14,9 @@ interface props{
 }
 export function CalendarioAgendamento(props: props) {
   const calendarRef = useRef(null) as any;
-  const {setModalDetalhesAgendamentoInfos, modalDetalhesAgendamentoInfos, setModalDetalhesAgendamento, modalDetalhesAgendamento, putStatusAgendamento} = useContext(AgendamentoContext)
+  const {setModalDetalhesAgendamentoInfos, modalDetalhesAgendamentoInfos,
+     setModalDetalhesAgendamento, modalDetalhesAgendamento,
+      putStatusAgendamento, deleteAgendamento} = useContext(AgendamentoContext)
 
 
   const goToDate = (date: Date) => {
@@ -36,7 +38,7 @@ export function CalendarioAgendamento(props: props) {
   }
     return (
         <div className="calendarioAgendamento">
-          <ModalDetalhesAgendamento putStatusAgendamento={putStatusAgendamento} 
+          <ModalDetalhesAgendamento deleteAgendamento={deleteAgendamento} putStatusAgendamento={putStatusAgendamento} 
           modalDetalhesAgendamento={modalDetalhesAgendamento} setModalDetalhesAgendamento={setModalDetalhesAgendamento} 
           modalDetalhesAgendamentoInfos={modalDetalhesAgendamentoInfos}/>
             

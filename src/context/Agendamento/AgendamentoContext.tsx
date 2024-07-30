@@ -36,6 +36,7 @@ interface AgendamentoProps {
     modalDetalhesAgendamentoInfos: AgendamentoRetornoSelect
     setModalDetalhesAgendamentoInfos: React.Dispatch<React.SetStateAction<AgendamentoRetornoSelect>>
     putStatusAgendamento: (status: string, cd_it_agenda_central: number) => void
+    deleteAgendamento: (cd_it_agenda_central: number) => void
 }
 
 const agendamentoEstadoInicial = {
@@ -131,12 +132,14 @@ export const AgendamentoProvider = ({children}: props) => {
         await agendamentoController.postAgendamento(cadastroAgendamento)
         .then((response: AxiosResponse) => {
             console.log(response.data)
-            if(response.status === 500){
-                return toast.error("Erro de servidor")
+            if(response.status === 201){
+                
+                toast.success('Agendamento realizado com sucesso!')
+                getAgendamentos()
+                setNovoAgendamentoModal(false)
+                return
             }
-            toast.success('Agendamento realizado com sucesso!')
-            getAgendamentos()
-            setNovoAgendamentoModal(false)
+            return toast.error("Erro de servidor")
         })
         .catch((err) => {
             toast.error(err.response.data)
@@ -181,6 +184,18 @@ export const AgendamentoProvider = ({children}: props) => {
         })
     }
 
+    async function deleteAgendamento(cd_it_agenda_central: number){
+        await agendamentoController.deleteAgendamento(cd_it_agenda_central)
+        .then((response: AxiosResponse) => {
+            if(response.status === 200){
+                setModalDetalhesAgendamento(false)
+                setAgendamentos(agendamentos.filter((agendamento) => agendamento.cd_it_agenda_central !== cd_it_agenda_central))
+                return
+            }
+            toast.error("Erro ao deletar agendamento")
+        })
+    }
+
     function trocaStatusFront(status: string, cd_it_agenda_central: number){
         const agendamentosNovoStatus = agendamentos.map((agendamento) => {
             if (agendamento.cd_it_agenda_central === cd_it_agenda_central) {
@@ -204,6 +219,6 @@ export const AgendamentoProvider = ({children}: props) => {
              salas, setSalas,
              modalDetalhesAgendamento, setModalDetalhesAgendamento,
              modalDetalhesAgendamentoInfos, setModalDetalhesAgendamentoInfos,
-             putStatusAgendamento}}>{children}</AgendamentoContext.Provider>
+             putStatusAgendamento, deleteAgendamento}}>{children}</AgendamentoContext.Provider>
     )
 }
