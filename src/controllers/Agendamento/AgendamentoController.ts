@@ -38,4 +38,13 @@ export class AgendamentoController {
         })
         return response
     }
+
+    async putStatusAgendamento(status: string, cd_it_agenda_central: number) {
+        const response: AxiosResponse = await makeRequest({
+            method: "PUT",
+            url: `${ApiUrl}/agendamento/atualizaStatus`,
+            params: {status: status, cd_it_agenda_central: cd_it_agenda_central}
+        })
+        return response
+    }
 }    

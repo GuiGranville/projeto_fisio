@@ -35,6 +35,7 @@ interface AgendamentoProps {
     setModalDetalhesAgendamento: React.Dispatch<React.SetStateAction<boolean>>
     modalDetalhesAgendamentoInfos: AgendamentoRetornoSelect
     setModalDetalhesAgendamentoInfos: React.Dispatch<React.SetStateAction<AgendamentoRetornoSelect>>
+    putStatusAgendamento: (status: string, cd_it_agenda_central: number) => void
 }
 
 const agendamentoEstadoInicial = {
@@ -61,7 +62,7 @@ export const AgendamentoProvider = ({children}: props) => {
     const pacientesController = new PacientesController()
 
     const [dateAuxCalendar, setDateAuxCalendar] = useState(new Date().toISOString());
-    const [cadastroAgendamento, setCadastroAgendamento] = useState({lembrete_sms: "S", lembrete_whatsapp: "N", status: "AG", cd_convenio: 1} as AgendamentoBanco);
+    const [cadastroAgendamento, setCadastroAgendamento] = useState({lembrete_sms: "S", lembrete_whatsapp: "N", status: "AG", cd_convenio: 2} as AgendamentoBanco);
     const [agendamentos, setAgendamentos] = useState([] as AgendamentoRetornoSelect[]);
     const [novoAgendamentoModal, setNovoAgendamentoModal] = useState(false);
     
@@ -106,7 +107,7 @@ export const AgendamentoProvider = ({children}: props) => {
             setCadastroAgendamento({...cadastroAgendamento, cd_paciente: 0})
             return
         }
-        await pacientesController.getPacienteByName(nome.target.value, 1)
+        await pacientesController.getPacienteByName(nome.target.value)
         .then((response: AxiosResponse) => {
             console.log(response.data)
             setListaPacientes(response.data)
@@ -163,6 +164,34 @@ export const AgendamentoProvider = ({children}: props) => {
             toast.error("Erro ao carregar Salas")
         })
     }
+
+    async function putStatusAgendamento(status: string, cd_it_agenda_central: number){
+        
+        await agendamentoController.putStatusAgendamento(status, cd_it_agenda_central)
+        .then((response: AxiosResponse) => {
+            if(response.status === 200){
+                trocaStatusFront(status, cd_it_agenda_central)
+                return
+            }
+            toast.error("Erro ao alterar Status")
+        })
+        .catch((err: AxiosError) =>{
+            console.log(err)
+            toast.error("Erro ao alterar Status")
+        })
+    }
+
+    function trocaStatusFront(status: string, cd_it_agenda_central: number){
+        const agendamentosNovoStatus = agendamentos.map((agendamento) => {
+            if (agendamento.cd_it_agenda_central === cd_it_agenda_central) {
+                return { ...agendamento, status: status };
+            }
+            return agendamento;
+        });
+        
+        setAgendamentos(agendamentosNovoStatus);
+        
+    }
     return(
         <AgendamentoContext.Provider value={{dateChange, dateAuxCalendar, setDateAuxCalendar,
              cadastroAgendamento, setCadastroAgendamento,
@@ -174,6 +203,7 @@ export const AgendamentoProvider = ({children}: props) => {
              procedimentos, setProcedimentos,
              salas, setSalas,
              modalDetalhesAgendamento, setModalDetalhesAgendamento,
-             modalDetalhesAgendamentoInfos, setModalDetalhesAgendamentoInfos}}>{children}</AgendamentoContext.Provider>
+             modalDetalhesAgendamentoInfos, setModalDetalhesAgendamentoInfos,
+             putStatusAgendamento}}>{children}</AgendamentoContext.Provider>
     )
 }

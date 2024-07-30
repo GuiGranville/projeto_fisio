@@ -14,7 +14,7 @@ interface props{
 }
 export function CalendarioAgendamento(props: props) {
   const calendarRef = useRef(null) as any;
-  const {setModalDetalhesAgendamentoInfos, modalDetalhesAgendamentoInfos, setModalDetalhesAgendamento, modalDetalhesAgendamento} = useContext(AgendamentoContext)
+  const {setModalDetalhesAgendamentoInfos, modalDetalhesAgendamentoInfos, setModalDetalhesAgendamento, modalDetalhesAgendamento, putStatusAgendamento} = useContext(AgendamentoContext)
 
 
   const goToDate = (date: Date) => {
@@ -36,7 +36,9 @@ export function CalendarioAgendamento(props: props) {
   }
     return (
         <div className="calendarioAgendamento">
-          <ModalDetalhesAgendamento modalDetalhesAgendamento={modalDetalhesAgendamento} setModalDetalhesAgendamento={setModalDetalhesAgendamento} modalDetalhesAgendamentoInfos={modalDetalhesAgendamentoInfos}/>
+          <ModalDetalhesAgendamento putStatusAgendamento={putStatusAgendamento} 
+          modalDetalhesAgendamento={modalDetalhesAgendamento} setModalDetalhesAgendamento={setModalDetalhesAgendamento} 
+          modalDetalhesAgendamentoInfos={modalDetalhesAgendamentoInfos}/>
             
           <FullCalendar 
             ref={calendarRef}
@@ -84,13 +86,24 @@ export function CalendarioAgendamento(props: props) {
                 props.agendamentos &&
                 props.agendamentos.map((item: AgendamentoRetornoSelect) =>{
                     return {
-                      title: `${item.nm_paciente} (${item.nm_profissional})  ${item.hr_inicio} às ${item.hr_fim}`,
+                      title: `[${item.nm_profissional}] ${item.nm_paciente} - ${item.hr_inicio} às ${item.hr_fim}`,
                       start: `${moment(item.dt_inicio).format('YYYY-MM-DD')} ${item.hr_inicio}`,
                       end: `${moment(item.dt_inicio).format('YYYY-MM-DD')} ${item.hr_fim}`,    
                       
                       extendedProps: item,
-                      backgroundColor: (item.status === "AG" && "#3788d8") || (item.status === "CA" && "#ff0000") || (item.status === "CO" && "#00a116") || "#3788d8",
-                      borderColor: (item.status === "AG" && "#3788d8") || (item.status === "CA" && "#ff0000") || (item.status === "CO" && "#00a116") || "#3788d8",
+                      backgroundColor: 
+                      (item.status === "AG" && "#3788d8") || 
+                      (item.status === "CA" && "#ff0000") || 
+                      (item.status === "CO" && "#00a116") || 
+                      (item.status === "EA" && "#b4b229") ||
+                      "#3788d8",
+
+                      borderColor: 
+                      (item.status === "AG" && "#3788d8") || 
+                      (item.status === "CA" && "#ff0000") || 
+                      (item.status === "CO" && "#00a116") || 
+                      (item.status === "EA" && "#b4b229") ||
+                      "#3788d8",
                     }
                 })
                 

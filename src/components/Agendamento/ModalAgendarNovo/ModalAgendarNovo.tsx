@@ -31,7 +31,7 @@ export function ModalAgendarNovo(props: props) {
     const listaSalas: any = [{label: "", value: 0}]
     const lembreteSms = [{label: "Sim", value: "S"}, {label: "Não", value: "N"}]
     const status = [{label: "Agendado", value: "A"}, {label: "Cancelado", value: "C"}, {label: "Realizado", value: "R"}]
-    const convenios = [{label: "Particular", value: 1}]
+    const convenios = [{label: "Particular", value: 2}]
 
     function handleChange(e: Event){
         const {name, value} = e.target as HTMLInputElement

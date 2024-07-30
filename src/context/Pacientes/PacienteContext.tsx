@@ -63,9 +63,7 @@ export const PacienteProvider = ({children}: props) =>{
     const [pacientesObject, setPacientesObject] = useState([] as PacienteBanco[])
     const [countPacientes, setCountPacientes] = useState(0)
     const [page, setPage] = useState(1)
-    const [cadastroPaciente, setCadastroPaciente] = useState({
-        cd_multi_empresa: 1
-    } as PacienteBanco)
+    const [cadastroPaciente, setCadastroPaciente] = useState({} as PacienteBanco)
 
     useEffect(() =>{
         getAllPacientes()
@@ -96,7 +94,7 @@ export const PacienteProvider = ({children}: props) =>{
 
         if(response.status === 201){
             toast.success("Criado com Sucesso !")
-            setCadastroPaciente({cd_multi_empresa: 1} as PacienteBanco) 
+            setCadastroPaciente({} as PacienteBanco) 
             setPacientesObject(response.data)
         }else{
             toast.error(response.data)
