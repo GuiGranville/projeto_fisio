@@ -11,7 +11,7 @@ import { LoginWrapper } from "../pages/Login/Login";
 
 
 function PrivateRoutes() {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if(!token) {
         return <Navigate to={"/login"}/>;
     }

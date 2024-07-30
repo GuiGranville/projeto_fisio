@@ -30,3 +30,12 @@
         }
     }
 }
+
+@media screen and (max-height: 850px) {
+    .modalDetalhesAgendamento-background{
+        .modalDetalhesAgendamento{
+            width: 20rem;
+            height: 22rem;
+        }
+    }
+}

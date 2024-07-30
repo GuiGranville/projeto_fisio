@@ -26,7 +26,7 @@ export const LoginProvider = ({ children }: props) => {
         const response = await loginController.auth(email, password)
         console.log(response)
         if(response.status === 200){
-            localStorage.setItem("token", response.data.token)
+            sessionStorage.setItem("token", response.data.token)
             navigate("/agendamento")
             window.location.reload()
         }

@@ -32,3 +32,20 @@
        }
    }
 }
+
+@media screen and (max-height: 750px) {
+    .pacientes-container{
+        .pacientes-container-filtros{
+           .headerFiltros{
+            button{
+                font-size: 12px;
+            }
+            input{
+                font-size: 12px;
+            }
+           } 
+        }
+
+        
+    }
+}    
