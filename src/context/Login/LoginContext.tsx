@@ -29,6 +29,7 @@ export const LoginProvider = ({ children }: props) => {
             sessionStorage.setItem("token", response.data.token)
             navigate("/agendamento")
             window.location.reload()
+            return
         }
         toast.error("Email ou Senha Incorreta")
        
