@@ -8,6 +8,7 @@ export interface AgendamentoBanco{
     cd_atendimento?: number
     cd_profissional?: number
     cd_procedimento?: number
+    cd_convenio?: number
     cd_sala?: number
     status?: string
     situacao?: string
@@ -22,10 +23,16 @@ export interface AgendamentoRetornoSelect{
 	nm_paciente: string
 	cd_profissional: number
 	nm_profissional: string
+    nm_convenio?: string
+    nm_procedimento: string
+    nm_sala: string
 	hr_inicio: string
 	dt_inicio: string
 	hr_fim: string
 	dt_fim: string
+    numero_telefone: string
+    procedimento: string
+    status: string
 }
 
 export interface ProcedimentoBanco{

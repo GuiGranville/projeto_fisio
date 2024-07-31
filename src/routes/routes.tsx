@@ -11,7 +11,7 @@ import { LoginWrapper } from "../pages/Login/Login";
 
 
 function PrivateRoutes() {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if(!token) {
         return <Navigate to={"/login"}/>;
     }
@@ -23,6 +23,7 @@ function PrivateRoutes() {
                 <Sidebar/>
                 <Routes>
                 <Route path="/pacientes" element={<PacientesWrapper/>}/>
+                <Route path="/" element={<AgendamentoWrapper/>}/>
                 <Route path="/agendamento" element={<AgendamentoWrapper/>}/>
                 <Route path="/profissionais" element={<ProfissionaisWrapper/>}/>
                 
@@ -35,7 +36,9 @@ function PrivateRoutes() {
 export function AppRoutes() {
     return (
         <BrowserRouter>
+            <ToastContainer />
             <Routes>
+                
                 <Route path="/login" element={<LoginWrapper/>}/>
                 <Route path="*" element={<PrivateRoutes />} />
             </Routes>

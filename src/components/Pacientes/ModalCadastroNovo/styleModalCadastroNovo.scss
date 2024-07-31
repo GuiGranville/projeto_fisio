@@ -64,3 +64,44 @@
         }
     }
 }
+
+@media screen and (max-height: 750px) {
+    .modalCadastroNovo-background{
+        .modalCadastroNovo{
+            width: 60vw;
+            height: 90vh;
+
+            .modalCadastroNovo-dadosPessoais{
+                div{
+                    p{
+                        font-size: 12px;
+                    }
+                    input{
+                        font-size: 12px;
+                        height: 2rem;
+                    }
+                    select{
+                        font-size: 12px;
+                        height: 2rem !important;
+                    }
+                }
+            }
+            .modalCadastroNovo-dadosEndereco{
+                div{
+                    p{
+                        font-size: 12px;
+                    }
+                    input{
+                        font-size: 12px;
+                        height: 2rem;
+                    }
+                    
+                    select{
+                        font-size: 12px;
+                        height: 2rem !important;
+                    }
+                }
+            }
+        }
+    }
+}

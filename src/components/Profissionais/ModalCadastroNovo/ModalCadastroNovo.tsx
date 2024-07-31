@@ -18,6 +18,8 @@ interface props {
 
 export function ModalCadastroNovo(props: props) {
 
+    const privilegio = [{ value: "", label: "Selecionar" }, { value: "U", label: "Usuário" }, { value: "A", label: "Administrador" }]
+
     function closeModal(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         if (e.target === e.currentTarget) {
             props.setModalCadastrarNovo(false)
@@ -31,7 +33,6 @@ export function ModalCadastroNovo(props: props) {
         }else{
             props.postCadastroProfissionais(props.cadastroProfissional)
         }
-        props.setModalCadastrarNovo(false)
     }
 
     function cancelar() {
@@ -64,7 +65,7 @@ export function ModalCadastroNovo(props: props) {
                         <div>
                             <InputWithTitle name="numero_telefone" fnEdit={(e) => handleChange(e)} title="Telefone*" inputHeight="3.5rem" wrapperWidth="50%" />
                             <SelectWithTitle name="cd_tipo_profissional"  fnEdit={(e) => handleChange(e)} title="Tipo de Profissional*" inputHeight="3.5rem" wrapperWidth="50%" />
-                            <InputWithTitle name="privilegio"  fnEdit={(e) => handleChange(e)} title="Privilegio*" inputHeight="3.5rem" wrapperWidth="50%" />
+                            <SelectWithTitle listaItens={privilegio} name="privilegio"  fnEdit={(e) => handleChange(e)} title="Privilegio*" inputHeight="3.5rem" wrapperWidth="50%" />
                         </div>
                     </div>
                     <div className="modalCadastroNovo-footer">

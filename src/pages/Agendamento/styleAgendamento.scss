@@ -27,14 +27,21 @@
                 height: 100%;
                 display: flex;
                 justify-content: center;
+                padding-top: 20px;
+                
+                @media screen and (max-height: 750px) {
+                    padding-top: 50px;
+                    width: 15%;
+                }
                 .agendamento-container-left-calendario{
                     width: 90%;
                     height: 35%;
-                   
+                    
                 }
             }
+            
             .agendamento-container-mid{
-                width: 60%;
+                width: 80%;
                 height: 100%;
 
                 .agendamento-container-mid-calendario{
@@ -54,3 +61,5 @@
         }
     }    
 }
+
+

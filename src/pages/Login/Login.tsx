@@ -15,6 +15,7 @@ function Login() {
         const password = document.getElementById("password") as HTMLInputElement
 
         await auth(email.value, password.value)
+        
     }
 
     return (
@@ -27,7 +28,7 @@ function Login() {
                     <h1 style={{ color: "#ffffff" }}>Login</h1>
                     <div className="login-inputs">
                         <Input style={{ width: "80%" }} type="text" placeholder="Email" id="email"/>
-                        <Input style={{ width: "80%" }} type="text" placeholder="Senha" id="password"/>
+                        <Input style={{ width: "80%" }} type="password" placeholder="Senha" id="password"/>
                     </div>
                     <div className="login-button">
                         <Button onClick={handleLogin} style={{ width: "50%" }}>Entrar</Button>

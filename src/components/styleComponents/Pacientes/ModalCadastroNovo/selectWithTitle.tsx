@@ -20,7 +20,7 @@ interface props{
   inputHeight?: string
   wrapperWidth?: string
   placeholder?: string
-  fnEdit?: (e) => void
+  fnEdit?: (e: any) => void
   listaItens?: listaItensProps[]
   value?: string | number
   name?: string
