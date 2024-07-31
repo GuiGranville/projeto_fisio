@@ -5,6 +5,8 @@ import { InputWithTitle } from "../../styleComponents/Pacientes/ModalCadastroNov
 import { SelectWithTitle } from "../../styleComponents/Pacientes/ModalCadastroNovo/selectWithTitle"
 import { Title } from "../../styleComponents/title"
 import "./styleModalCadastroNovo.scss"
+import { validaInputsObrigatorios } from "../../../utils/validarInputsObrigatorios"
+import { toast } from "react-toastify"
 
 interface props {
     modalCadastrarNovo: boolean
@@ -60,6 +62,11 @@ export function ModalCadastroNovo(props: props) {
     }
 
     function submitForm() {
+        const camposObrigatorios = ['nm_paciente', 'cpf', 'estado_civil', 'ds_sexo', 'numero_telefone', 'dt_nascimento']
+        const faltaCampos = validaInputsObrigatorios(props.cadastroPaciente, camposObrigatorios)
+        if(faltaCampos){
+            return toast.error("Faltam campos obrigatórios")
+        }
         if(props.editMode){
             props.putCadastroPacientes(props.cadastroPaciente)
         }else{
@@ -89,7 +96,7 @@ export function ModalCadastroNovo(props: props) {
                         <div>
                             <InputWithTitle name="nm_paciente" value={props.cadastroPaciente.nm_paciente} fnEdit={(e) => handleChange(e)} title="Nome*" placeholder="Nome do Paciente" inputHeight="3.5rem" wrapperWidth="40%" />
                             <InputWithTitle name="cpf" value={props.cadastroPaciente.cpf} fnEdit={(e) => handleChange(e)} title="CPF*" placeholder="___.___.___-__" inputHeight="3.5rem" wrapperWidth="30%" />
-                            <InputWithTitle name="dt_nascimento" value={moment(props.cadastroPaciente.dt_nascimento).format("YYYY-MM-DD")} fnEdit={(e) => handleChange(e)} type="date" title="Data Nascimento" placeholder="__/__/____" inputHeight="3.5rem" wrapperWidth="30%" />
+                            <InputWithTitle name="dt_nascimento" value={props.cadastroPaciente.dt_nascimento ? moment(props.cadastroPaciente.dt_nascimento).format("YYYY-MM-DD") : ""} fnEdit={(e) => handleChange(e)} type="date" title="Data Nascimento*" placeholder="__/__/____" inputHeight="3.5rem" wrapperWidth="30%" />
                         </div>
                         <div>
                             <InputWithTitle name="rg" value={props.cadastroPaciente.rg} fnEdit={(e) => handleChange(e)} title="RG" inputHeight="3.5rem" wrapperWidth="30%" />

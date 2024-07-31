@@ -5,6 +5,8 @@ import { SelectWithTitle } from "../../styleComponents/Pacientes/ModalCadastroNo
 import { Title } from "../../styleComponents/title"
 import "./styleModalCadastroNovo.scss"
 import { ProfissionalBanco } from "../../../types/ProfissionalTypes"
+import { validaInputsObrigatorios } from "../../../utils/validarInputsObrigatorios"
+import { toast } from "react-toastify"
 
 interface props {
     modalCadastrarNovo: boolean
@@ -28,6 +30,12 @@ export function ModalCadastroNovo(props: props) {
     }
 
     function submitForm() {
+        const camposObrigatorios = ['nm_profissional', 'email', 'senha', 'numero_telefone', 'privilegio', 'cd_tipo_profissional']
+        const faltaCampos = validaInputsObrigatorios(props.cadastroProfissional, camposObrigatorios)
+
+        if(faltaCampos){
+            return toast.error("Faltam campos obrigatórios")
+        }    
         if(props.editMode){
            props.putCadastroProfissionais(props.cadastroProfissional)
         }else{
