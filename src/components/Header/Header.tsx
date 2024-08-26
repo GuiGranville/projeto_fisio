@@ -12,7 +12,7 @@ export function Header(){
                 <input type="text" placeholder="Pesquisar Paciente"/>
             </div>
             <div className="header-perfil">
-                <p>Kiomara</p>
+                {sessionStorage.getItem("user") && <p>{sessionStorage.getItem("user")}</p>}
             </div>
         </div>
     )

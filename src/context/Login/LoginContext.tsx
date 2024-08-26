@@ -1,3 +1,4 @@
+
 import { createContext, useState } from "react";
 import { LoginController } from "../../controllers/Login/LoginController";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +28,7 @@ export const LoginProvider = ({ children }: props) => {
         console.log(response)
         if(response.status === 200){
             sessionStorage.setItem("token", response.data.token)
+            sessionStorage.setItem("user", response.data.userInformation.nm_profissional)
             navigate("/agendamento")
             window.location.reload()
             return

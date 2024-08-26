@@ -1,0 +1,77 @@
+
+.modalEvolucao{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    .modalEvolucao-container{
+        width: 40vw;
+        height: 60vh;
+        min-width: 300px;
+        min-height: 500px;
+        background-color: #FFFFFF;
+
+
+        .modalEvolucao-header{
+            padding: 10px;
+        }
+
+        .modalEvolucao-body{
+            width: 100%;
+            height: 80%;
+            text-wrap: wrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            .modalEvolucao-infos{
+                width: 100%;
+                height: 40%;
+                padding-left: 20px;
+                div{
+                    margin-top: 10px;
+                    display: flex;
+                    .modalEvolucao-infos-campo{
+                        color: #727272;
+                    }
+                    p{
+                        margin-right: 10px;
+                    }
+                }
+
+                
+            }
+            .modalEvolucao-text{
+                width: 100%;
+                height: 60%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                textarea{
+                    width: 95%;
+                    height: 100%;
+                    resize: none;
+                    padding: 5px;
+                }
+            }
+            .modalEvolucao-buttons{
+                width: 100%;
+                height: 10%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+        }
+    }
+}

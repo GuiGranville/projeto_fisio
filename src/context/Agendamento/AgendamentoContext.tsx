@@ -37,6 +37,10 @@ interface AgendamentoProps {
     setModalDetalhesAgendamentoInfos: React.Dispatch<React.SetStateAction<AgendamentoRetornoSelect>>
     putStatusAgendamento: (status: string, cd_it_agenda_central: number) => void
     deleteAgendamento: (cd_it_agenda_central: number) => void
+    modalAvaliacao: boolean 
+    setModalAvalicao: React.Dispatch<React.SetStateAction<boolean>>
+    modalEvolucao: boolean 
+    setModalEvolucao: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const agendamentoEstadoInicial = {
@@ -47,8 +51,9 @@ const agendamentoEstadoInicial = {
     cd_atendimento: 0,
     cd_profissional: 0,
     cd_procedimento: 0,
+    cd_convenio: 2,
     cd_sala: 0,
-    status: "",
+    status: "AG",
     situacao: "",
     observacao : "",
     lembrete_sms: "S",
@@ -74,6 +79,8 @@ export const AgendamentoProvider = ({children}: props) => {
 
     const [modalDetalhesAgendamento, setModalDetalhesAgendamento] = useState(false);
     const [modalDetalhesAgendamentoInfos, setModalDetalhesAgendamentoInfos] = useState({} as AgendamentoRetornoSelect);
+    const [modalAvaliacao, setModalAvalicao] = useState(false);
+    const [modalEvolucao, setModalEvolucao] = useState(false);
 
     useEffect(() => {
         getAgendamentos()
@@ -219,6 +226,8 @@ export const AgendamentoProvider = ({children}: props) => {
              salas, setSalas,
              modalDetalhesAgendamento, setModalDetalhesAgendamento,
              modalDetalhesAgendamentoInfos, setModalDetalhesAgendamentoInfos,
-             putStatusAgendamento, deleteAgendamento}}>{children}</AgendamentoContext.Provider>
+             putStatusAgendamento, deleteAgendamento,
+             modalEvolucao, setModalEvolucao,
+             modalAvaliacao, setModalAvalicao}}>{children}</AgendamentoContext.Provider>
     )
 }
