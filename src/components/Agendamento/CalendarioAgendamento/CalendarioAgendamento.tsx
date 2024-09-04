@@ -32,6 +32,7 @@ export function CalendarioAgendamento(props: props) {
   }, [props.date]);
 
   function handleOpenModalDetalhes(props: AgendamentoRetornoSelect ){
+    console.log(props)
     setModalDetalhesAgendamentoInfos(props)
     setModalDetalhesAgendamento(true)
 

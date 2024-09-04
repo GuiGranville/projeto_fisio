@@ -19,6 +19,7 @@ export interface AgendamentoBanco{
 
 export interface AgendamentoRetornoSelect{
     cd_it_agenda_central: number
+    cd_atendimento: number
 	cd_paciente: number
 	nm_paciente: string
 	cd_profissional: number

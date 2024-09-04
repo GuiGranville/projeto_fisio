@@ -41,6 +41,7 @@ interface AgendamentoProps {
     setModalAvalicao: React.Dispatch<React.SetStateAction<boolean>>
     modalEvolucao: boolean 
     setModalEvolucao: React.Dispatch<React.SetStateAction<boolean>>
+    updateEvolucao: (evolucao: string, cd_atendimento: number, cd_paciente: number) => void
 }
 
 const agendamentoEstadoInicial = {
@@ -203,6 +204,17 @@ export const AgendamentoProvider = ({children}: props) => {
         })
     }
 
+    async function updateEvolucao(evolucao: string, cd_atendimento: number, cd_paciente: number){
+        
+        await pacientesController.updateEvolucaoPaciente(cd_paciente, cd_atendimento, evolucao)
+        .then((response: AxiosResponse) => {
+            if(response.status === 200){
+                return toast.success("Evolução atualizada com sucesso")
+            }
+        })
+        
+    }
+
     function trocaStatusFront(status: string, cd_it_agenda_central: number){
         const agendamentosNovoStatus = agendamentos.map((agendamento) => {
             if (agendamento.cd_it_agenda_central === cd_it_agenda_central) {
@@ -228,6 +240,7 @@ export const AgendamentoProvider = ({children}: props) => {
              modalDetalhesAgendamentoInfos, setModalDetalhesAgendamentoInfos,
              putStatusAgendamento, deleteAgendamento,
              modalEvolucao, setModalEvolucao,
-             modalAvaliacao, setModalAvalicao}}>{children}</AgendamentoContext.Provider>
+             modalAvaliacao, setModalAvalicao,
+             updateEvolucao}}>{children}</AgendamentoContext.Provider>
     )
 }

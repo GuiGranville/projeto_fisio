@@ -4,7 +4,7 @@ import "./styleModalDetalhesAgendamento.scss"
 import { Button } from "../../../styleComponents/button"
 import { FaRegTrashAlt, FaPencilAlt } from "react-icons/fa";
 import { SlArrowDown } from "react-icons/sl";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { DropDown } from "../../../Global/DropDown/DropDown";
 import { ModalEvolucao } from "../../ModalEvolucao/ModalEvolucao";
 import { AgendamentoContext } from "../../../../context/Agendamento/AgendamentoContext";
@@ -18,13 +18,13 @@ interface props {
 }
 
 export function ModalDetalhesAgendamento(props: props) {
-    const { modalAvaliacao, setModalAvalicao, modalEvolucao, setModalEvolucao } = useContext(AgendamentoContext)
+    const { modalEvolucao, setModalEvolucao } = useContext(AgendamentoContext)
     const [openDropDown, setOpenDropDown] = useState(false)
-    const [optionsDropDown, setOptionsDropDown] = useState<{ value: string; fn: () => void; }[]>([
+   
+    const optionsDropDown: { value: string; fn: () => void; }[] = [
         { value: "Iniciar avaliação", fn: () => openModaisAvaliacaoEvolucao("Avaliacao") },
         { value: "Iniciar evolução", fn: () => openModaisAvaliacaoEvolucao("Evolucao") }
-    ]);
-
+    ]
     function closeModal(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         if (e.target === e.currentTarget) {
             props.setModalDetalhesAgendamento(false)
@@ -41,7 +41,6 @@ export function ModalDetalhesAgendamento(props: props) {
             setModalEvolucao(true)
         }
     }
-
 
     return (
         <div onClick={(e) => { closeModal(e) }} style={{ display: props.modalDetalhesAgendamento ? "flex" : "none" }} className="modalDetalhesAgendamento-background">

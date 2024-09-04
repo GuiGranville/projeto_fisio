@@ -4,9 +4,11 @@ import { AgendamentoRetornoSelect } from "../../../types/AgendamentoTypes"
 import moment from "moment"
 import { Title } from "../../styleComponents/title"
 import { Button } from "../../styleComponents/button"
+import { useContext, useState } from "react"
+import { AgendamentoContext } from "../../../context/Agendamento/AgendamentoContext"
 
 
-interface modalEvolucaoProps{
+interface modalEvolucaoProps {
     open: boolean
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
     modalDetalhesAgendamentoInfos: AgendamentoRetornoSelect
@@ -14,18 +16,21 @@ interface modalEvolucaoProps{
 
 export function ModalEvolucao(props: modalEvolucaoProps) {
 
+    const { updateEvolucao } = useContext(AgendamentoContext)
+    const [evolucao, setEvolucao] = useState("")
+
     function closeModal(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         if (e.target === e.currentTarget) {
             props.setOpen(false)
         }
 
     }
-    return(
-        <div className="modalEvolucao" style={{display: props.open ? "flex" : "none"}} onClick={(e) => { closeModal(e) }}>
+    return (
+        <div className="modalEvolucao" style={{ display: props.open ? "flex" : "none" }} onClick={(e) => { closeModal(e) }}>
             <div className="modalEvolucao-container">
                 <div className="modalEvolucao-header">
                     <Title style={{ fontSize: "20px", fontWeight: "600" }}>Evolução</Title>
-                    <div onClick={() => props.setOpen(false)}><FaTimes color="#FFFFFF" style={{width: "20px", height: "20px"}}/></div>
+                    <div onClick={() => props.setOpen(false)}><FaTimes color="#FFFFFF" style={{ width: "20px", height: "20px" }} /></div>
                 </div>
                 <div className="modalEvolucao-body">
                     <div className="modalEvolucao-infos">
@@ -44,11 +49,14 @@ export function ModalEvolucao(props: modalEvolucaoProps) {
                         </div>
                     </div>
                     <div className="modalEvolucao-text">
-                        <textarea placeholder="Digite Aqui" id="" cols={30} rows={10}></textarea>
+                        <textarea placeholder="Digite Aqui" id="" cols={30} rows={10} onChange={(e) => setEvolucao(e.target.value)}></textarea>
                     </div>
                     <div className="modalEvolucao-buttons">
-                        <Button onClick={() => props.setOpen(false)} style={{background: "#ef1b1b", width: "150px"}}>Cancelar</Button>
-                        <Button style={{background: "#2D9CDB", width: "150px"}}>Salvar</Button>
+                        <Button onClick={() => props.setOpen(false)} style={{ background: "#ef1b1b", width: "150px" }}>Cancelar</Button>
+                        <Button 
+                        onClick={() => 
+                            updateEvolucao(evolucao, props.modalDetalhesAgendamentoInfos.cd_atendimento, props.modalDetalhesAgendamentoInfos.cd_paciente)} 
+                        style={{ background: "#2D9CDB", width: "150px" }}>Salvar</Button>
                     </div>
                 </div>
             </div>

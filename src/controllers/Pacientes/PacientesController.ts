@@ -51,4 +51,14 @@ export class PacientesController {
         })
         return response
     }
+
+    async updateEvolucaoPaciente(cd_paciente: number, cd_atendimento: number, evolucao: string) {
+        const response: AxiosResponse = await makeRequest({
+            method: "PUT",
+            url: `${ApiUrl}/paciente/evolucao`,
+            data: {evolucao: evolucao},
+            params: {cd_paciente: cd_paciente, cd_atendimento: cd_atendimento}
+        })
+        return response
+    }
 }
